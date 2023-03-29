@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    td,
+    th {
+        border: 1px solid rgb(190, 190, 190);
+        padding: 10px;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    th[scope='col'] {
+        background-color: #696969;
+        color: #fff;
+    }
+
+    th[scope='row'] {
+        background-color: #d7d9f2;
+    }
+
+    caption {
+        padding: 10px;
+        caption-side: bottom;
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid rgb(200, 200, 200);
+        letter-spacing: 1px;
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        width: 100%;
+        height: 300px;
+    }
+
+    .container{
+        width: 100%;
+        height: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .title{
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #d7d9f2;
+      background-color: #df2935;
+   }
+</style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Clientes Cadastrados</h1>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">uf</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Remover</th>
+
+            </tr>
+            {% for cadastro_todos in cadastro_todos %}
+            <tr>
+                <th scope="row">{{cadastro_todos.id}}</th>
+                <td>{{cadastro_todos.nome}}</td>
+                <td>{{cadastro_todos.cpf}}</td>
+                <td>{{cadastro_todos.email}}</td>
+                <td>{{cadastro_todos.cidade}}</td>
+                <td>{{cadastro_todos.endereco}}</td>
+                <td>{{cadastro_todos.uf}}</td>
+                <td><a href="http://127.0.0.1:8000/loja/editar/{{cadastro_todos.id}}">Edit</a></td>
+                <td><a href="http://127.0.0.1:8000/loja/remover/{{cadastro_todos.id}}">Remove</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</body>
+</html>

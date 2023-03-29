@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+<style type="text/css">
+td,
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+th[scope='col'] {
+    background-color: #696969;
+    color: #fff;
+}
+
+th[scope='row'] {
+    background-color: #d7d9f2;
+}
+
+caption {
+    padding: 10px;
+    caption-side: bottom;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+}
+</style>
+</head>
+<body>
+  {% if messages %}
+        <ul class="messages">
+            {% for mensagem in messages %}
+            <li {% if mensagem.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{mensagem}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h1>Bem-Vindo a página do Cliente!</h1>
+    <h2>Faça seu primeiro cadastro</h2>
+
+    <form method="POST" action="{% url 'clientes' %}">{% csrf_token %}
+
+        <input type="text" placeholder="Digite seu nome" name="nome">
+        <br>
+        <br>
+        <input type="text" placeholder="Digite seu CPF" name="cpf">
+        <br>
+        <br>
+        <input type="text" placeholder="Insira seu email" name="email">
+        <br>
+        <br>
+        <input type="text" placeholder="Digite seu endereço" name="endereco">
+        <br>
+        <br>
+        <input type="text" placeholder="Digite sua cidade" name="cidade">
+        <br>
+        <br>
+
+        <select name="uf">
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+        </select>
+        <input type="submit" placeholder="Cadastrar">
+    </form>
+
+
+<table>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Email</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Estado</th>
+
+    </tr>
+
+      <tr>
+        <th scope="row">{{cadastro_ultimo.id}}</th>
+         <td>{{cadastro_ultimo.nome}}</td>
+         <td>{{cadastro_ultimo.cpf}}</td>
+         <td>{{cadastro_ultimo.email}}</td>
+         <td>{{cadastro_ultimo.endereco}}</td>
+         <td>{{cadastro_ultimo.cidade}}</td>
+         <td>{{cadastro_ultimo.uf}}</td>
+
+    </tr>
+</table>
+
+</body>
+</html>
